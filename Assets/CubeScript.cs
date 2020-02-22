@@ -5,6 +5,9 @@ using UnityEngine;
 public class CubeScript : MonoBehaviour
 {
     public Vector3 RottationVector;
+    public int Size;
+    private bool flag = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +18,19 @@ public class CubeScript : MonoBehaviour
     void Update()
     {
         this.gameObject.transform.Rotate(RottationVector);
+    }
+
+    private void FixedUpdate()
+    {
+        if (flag)
+        {
+            this.gameObject.transform.localScale += Vector3.one*Size;
+            flag = false;
+        }
+        else
+        {
+            this.gameObject.transform.localScale -= Vector3.one *Size;
+            flag = true;
+        }
     }
 }
